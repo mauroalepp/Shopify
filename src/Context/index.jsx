@@ -36,18 +36,19 @@ export const ShoppingCartProvider = ({children}) => {
 
 
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`${apiUrl}/products`)
-          const data = await response.json()
-          setItems(data)
-        } catch (error) {
-          console.error(`Oh no, ocurrió un error: ${error}`);
-        }
-      }
-      fetchData()
-    }, [])
+
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const response = await fetch(`${apiUrl}/products`)
+    //       const data = await response.json()
+    //       setItems(data)
+    //     } catch (error) {
+    //       console.error(`Oh no, ocurrió un error: ${error}`);
+    //     }
+    //   }
+    //   fetchData()
+    // }, [])
 
     const filteredItemsByTitle = (items, searchByTitle) => {
       return items?.filter (item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()) )
@@ -79,7 +80,9 @@ export const ShoppingCartProvider = ({children}) => {
             searchByTitle,
             setSearchByTitle,
             filteredItems,
-            setFilteredItems
+            setFilteredItems,
+
+            
         }}>
              {children}
         </ShoppingCartContext.Provider>
